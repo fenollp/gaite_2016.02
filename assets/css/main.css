@@ -2416,9 +2416,9 @@
 			animation-fill-mode: forwards;
 			background: rgba(52, 27, 43, 0.5);
 			color: #fff;
-			display: inline-block;
+			/*display: inline-block;*/
 			opacity: 0;
-			padding: 3em;
+			/*padding: 3em;*/
 			text-align: center;
 		}
 
