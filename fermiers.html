@@ -25,18 +25,22 @@
     $(document).ready(function(){
       map = new GMaps({
         div: '#map',
-        lat: 48.866773,
-        lng: 2.3514712,
+        lat: 48.8685310,
+        lng: 2.3520492,
       });
       map.drawOverlay({
         lat: map.getCenter().lat(),
         lng: map.getCenter().lng(),
-        content: '<div ><img style="width:25%; height:25%" src="images/pictoradis.png" alt="" /><div class=" above"></div></div>',
+        content: '<div ><img style="width:15%; height:15%; opacity:0.7;" src="images/pictoradis.png" alt="" /><div class=" above"></div></div>',
         verticalAlign: 'top',
-        horizontalAlign: 'center',
-        // zoomOut: 100,
+        horizontalAlign: 'center'
       });
-      map.setOptions({ scrollwheel: false });
+      map.setOptions({
+      	scrollwheel: false,
+      	disableDoubleClickZoom: true,
+      	draggable: true,
+      	zoomControl: false,
+      });
   });
   </script>
 	</head>
