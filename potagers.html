@@ -16,7 +16,108 @@
 
         <!-- <link rel="stylesheet" href="assets/css/screen.css" /> -->
     </head>
-    <body class="left-sidebar">
+    <body class="left-sidebar" style="padding:0px; margin:0px; background-color:#fff;font-family:Arial, sans-serif">
+
+    <script type="text/javascript" src="assets/js/jssor.slider.min.js"></script>
+    <!-- use jssor.slider.debug.js instead for debug -->
+    <script>
+        jssor_1_slider_init = function() {
+            
+            var jssor_1_SlideshowTransitions = [
+              {$Duration:1200,$Opacity:2}
+            ];
+            
+            var jssor_1_options = {
+              $AutoPlay: true,
+              $SlideshowOptions: {
+                $Class: $JssorSlideshowRunner$,
+                $Transitions: jssor_1_SlideshowTransitions,
+                $TransitionsOrder: 1
+              },
+              $ArrowNavigatorOptions: {
+                $Class: $JssorArrowNavigator$
+              },
+              $BulletNavigatorOptions: {
+                $Class: $JssorBulletNavigator$
+              }
+            };
+            
+            var jssor_1_slider = new $JssorSlider$("jssor_1", jssor_1_options);
+            
+            //responsive code begin
+            //you can remove responsive code if you don't want the slider scales while window resizing
+            function ScaleSlider() {
+                var refSize = jssor_1_slider.$Elmt.parentNode.clientWidth;
+                if (refSize) {
+                    refSize = Math.min(refSize, 600);
+                    jssor_1_slider.$ScaleWidth(refSize);
+                }
+                else {
+                    window.setTimeout(ScaleSlider, 30);
+                }
+            }
+            ScaleSlider();
+            $Jssor$.$AddEvent(window, "load", ScaleSlider);
+            $Jssor$.$AddEvent(window, "resize", ScaleSlider);
+            $Jssor$.$AddEvent(window, "orientationchange", ScaleSlider);
+            //responsive code end
+        };
+    </script>
+
+    <style>
+        
+        /* jssor slider bullet navigator skin 05 css */
+        /*
+        .jssorb05 div           (normal)
+        .jssorb05 div:hover     (normal mouseover)
+        .jssorb05 .av           (active)
+        .jssorb05 .av:hover     (active mouseover)
+        .jssorb05 .dn           (mousedown)
+        */
+        .jssorb05 {
+            position: absolute;
+        }
+        .jssorb05 div, .jssorb05 div:hover, .jssorb05 .av {
+            position: absolute;
+            /* size of bullet elment */
+            width: 16px;
+            height: 16px;
+            background: url('img/b05.png') no-repeat;
+            overflow: hidden;
+            cursor: pointer;
+        }
+        .jssorb05 div { background-position: -7px -7px; }
+        .jssorb05 div:hover, .jssorb05 .av:hover { background-position: -37px -7px; }
+        .jssorb05 .av { background-position: -67px -7px; }
+        .jssorb05 .dn, .jssorb05 .dn:hover { background-position: -97px -7px; }
+
+        /* jssor slider arrow navigator skin 12 css */
+        /*
+        .jssora12l                  (normal)
+        .jssora12r                  (normal)
+        .jssora12l:hover            (normal mouseover)
+        .jssora12r:hover            (normal mouseover)
+        .jssora12l.jssora12ldn      (mousedown)
+        .jssora12r.jssora12rdn      (mousedown)
+        */
+        .jssora12l, .jssora12r {
+            display: block;
+            position: absolute;
+            /* size of arrow element */
+            width: 30px;
+            height: 46px;
+            cursor: pointer;
+            background: url('img/a12.png') no-repeat;
+            overflow: hidden;
+        }
+        .jssora12l { background-position: -16px -37px; }
+        .jssora12r { background-position: -75px -37px; }
+        .jssora12l:hover { background-position: -136px -37px; }
+        .jssora12r:hover { background-position: -195px -37px; }
+        .jssora12l.jssora12ldn { background-position: -256px -37px; }
+        .jssora12r.jssora12rdn { background-position: -315px -37px; }
+    </style>
+
         <div id="page-wrapper">
 
             <header id="header">
@@ -33,21 +134,68 @@
 
             <!-- Main -->
                 <article id="main">
-
                     <section class="wrapper style4 container">
 
-                          <a href="#" id="prev" title="go to the next slide"></a>
-                          <a href="#" id="next" title="go to the next slide"></a>
 
-                            <div id="box">
-                              <figure class="slide"><img src="images/bacs-vide.png" alt="vide"/></figure>
-                              <figure class="slide"><img src="images/bacs-classique.png" alt="classique"/></figure>
-                              <figure class="slide"><img src="images/bacs-mediterraneen.png" alt="mediterraneen"/></figure>
+                            <div class="row 150%">
+                                <div class="4u 12u(narrower)">
+                                        <div class="sidebar">
+
+                                            <section id="jardibox">
+                                                <header style="text-align:center; padding-top:1em;">Les modules</header>
+
+    <div id="jssor_1" style="position: relative; margin: 0 auto; top: 0px; left: 0px; width: 600px; height: 300px; overflow: hidden; visibility: hidden;">
+        <!-- Loading Screen -->
+        <div data-u="loading" style="position: absolute; top: 0px; left: 0px;">
+            <div style="filter: alpha(opacity=70); opacity: 0.7; position: absolute; display: block; top: 0px; left: 0px; width: 100%; height: 100%;"></div>
+            <div style="position:absolute;display:block;background:url('img/loading.gif') no-repeat center center;top:0px;left:0px;width:100%;height:100%;"></div>
+        </div>
+        <div data-u="slides" style="cursor: default; position: relative; top: 0px; left: 0px; width: 600px; height: 300px; overflow: hidden;">
+            <div data-p="112.50" style="display: none;">
+                <img data-u="image" src="images/bacs-vide.png"/>
+            </div>
+            <div data-p="112.50" style="display: none;">
+                <img data-u="image" src="images/bacs-classique.png"/>
+            </div>
+            <div data-p="112.50" style="display: none;">
+                <img data-u="image" src="images/bacs-mediterraneen.png"/>
+            </div>
+        </div>
+        <!-- Bullet Navigator -->
+        <div data-u="navigator" class="jssorb05" style="bottom:16px;right:16px;" data-autocenter="1">
+            <!-- bullet navigator item prototype -->
+            <div data-u="prototype" style="width:16px;height:16px;"></div>
+        </div>
+        <!-- Arrow Navigator -->
+        <span data-u="arrowleft" class="jssora12l" style="top:0px;left:0px;width:30px;height:46px;" data-autocenter="2"></span>
+        <span data-u="arrowright" class="jssora12r" style="top:0px;right:0px;width:30px;height:46px;" data-autocenter="2"></span>
+    </div>
+    <script>
+        jssor_1_slider_init();
+    </script>
+
+
+                                        </div>
+                                </div>
+                                <div class="8u 12u(narrower) important(narrower)">
+
+                                    <!-- Content -->
+                                        <div class="content" style="padding-top:2em;">
+                                            <section>
+                                                <header>
+                                                    <h3 style="text-indent:50px;">Des fermiers près de chez vous</h3>
+                                                </header>
+                                                
+                                                <p>Aliquam massa urna, imperdiet sit amet mi non, bibendum euismod est. Curabitur mi justo, tincidunt vel eros ullamcorper, porta cursus justo. Cras vel neque eros. Vestibulum diam quam, mollis at consectetur non, malesuada quis augue. Morbi tincidunt pretium interdum. Morbi mattis elementum orci, nec dictum massa. Morbi eu faucibus massa. Aliquam massa urna, imperdiet sit amet mi non, bibendum euismod est. Curabitur mi justo, tincidunt vel eros ullamcorper, porta cursus justo. Cras vel neque eros. Vestibulum diam.</p>
+                                                <p>Vestibulum diam quam, mollis at consectetur non, malesuada quis augue. Morbi tincidunt pretium interdum. Morbi mattis elementum orci, nec dictum porta cursus justo. Quisque ultricies lorem in ligula condimentum, et egestas turpis sagittis. Cras ac nunc urna. Nullam eget lobortis purus. Phasellus vitae tortor non est placerat tristique. Sed id sem et massa ornare pellentesque. Maecenas pharetra porta accumsan. </p>
+                                                <p>In vestibulum massa quis arcu lobortis tempus. Nam pretium arcu in odio vulputate luctus. Suspendisse euismod lorem eget lacinia fringilla. Sed sed felis justo. Nunc sodales elit in laoreet aliquam. Nam gravida, nisl sit amet iaculis porttitor, risus nisi rutrum metus, non hendrerit ipsum arcu tristique est.</p>
+                                            </section>
+                                        </div>
+
+                                </div>
                             </div>
-
-                    </section>
-
-                </article>
+                        </section>
+>
 
                 <footer id="footer">
                     <ul class="icons">
@@ -74,60 +222,5 @@
             <!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
             <script src="assets/js/main.js"></script>
 
-            <script src="assets/js/box-slider-all.jquery.min.js"></script>
-            <script>
-          $(function () {
-
-                var $box = $('#box')
-                  , $indicators = $('.goto-slide')
-                  , $effects = $('.effect')
-                  , $timeIndicator = $('#time-indicator')
-                  , slideInterval = 0;
-
-                var switchIndicator = function ($c, $n, currIndex, nextIndex) {
-                  $timeIndicator.stop().css('width', 0);
-                  $indicators.removeClass('current').eq(nextIndex).addClass('current');
-                };
-
-                var startTimeIndicator = function () {
-                  $timeIndicator.animate({width: '680px'}, slideInterval);
-                };
-
-                // initialize the plugin with the desired settings
-                $box.boxSlider({
-                    speed: 1000
-                  , autoScroll: true
-                  , timeout: slideInterval
-                  , next: '#next'
-                  , prev: '#prev'
-                  , pause: '#pause'
-                  , effect: 'scrollVert3d'
-                  , blindCount: 15
-                  , onbefore: switchIndicator
-                  , onafter: startTimeIndicator
-                });
-
-                startTimeIndicator();
-
-                // pagination isn't built in simply because it's easy to
-                // roll your own with the plugin API methods
-                $('#controls').on('click', '.goto-slide', function (ev) {
-                  $box.boxSlider('showSlide', $(this).data('slideindex'));
-                  ev.preventDefault();
-                });
-
-                $('#effect-list').on('click', '.effect', function (ev) {
-                  var $effect = $(this);
-
-                  $box.boxSlider('option', 'effect', 'scrollHorz');
-                  $effects.removeClass('current');
-                  $effect.addClass('current');
-
-                  switchIndicator(null, null, 0, 0);
-                  ev.preventDefault();
-                });
-
-          });
-        </script>
     </body>
 </html>
