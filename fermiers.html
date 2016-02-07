@@ -21,6 +21,29 @@
   <link href="assets/css/gmap-styles.css" rel='stylesheet' type='text/css' />
   <link rel="stylesheet" type="text/css" href="assets/css/gmap-examples.css" />
   <script type="text/javascript">
+  function tougueul (ty) {
+  	var jardibox_img = $('#jardibox_img');
+  	var jardibox_txt = $('#jardibox p');
+  	var jardibox_btn = $('#jardibox_bouton');
+  	if (ty === 'sylvie') {
+  		console.log('ty '+ty);
+  		jardibox_img.attr('src', 'images/emily.png');
+  		jardibox_txt.text('Le jardin de Sylvie est fort en radis…');
+  		jardibox_btn.show();
+  	} else if (ty === 'martin') {
+  		console.log('ty '+ty);
+  		jardibox_img.attr('src', 'images/martinmatin.png');
+  		jardibox_txt.text('Martin est fan #1 de radis noirs.');
+  		jardibox_btn.show();
+  	} else {
+  		console.log('ty '+ty);
+  		jardibox_img.attr('src', '');
+  		jardibox_txt.text('Glissez sur les radis !');
+  		jardibox_btn.hide();
+  	}
+  };
+  tougueul('');
+
     var map;
     $(document).ready(function(){
       map = new GMaps({
@@ -43,12 +66,16 @@
         lat: 48.866259,
         lng:  2.358502,
         icon: 'images/radisnoir.png',
+        mouseover: function (evt) { tougueul('sylvie'); },
+        // mouseout: function (evt) { tougueul(''); },
       });
 
       map.addMarker({
         lat: 48.865534,
         lng:  2.343882,
 		icon: 'images/radisrouge.png',
+        mouseover: function (evt) { tougueul('martin'); },
+        // mouseout: function (evt) { tougueul(''); },
       });
 
       map.setOptions({
@@ -67,8 +94,9 @@
 				<h1 id="logo"><a href="index.html"><img src="images/TF_logo.svg" alt="TERRE FERME" style="width:5%;"/></a></h1>
 				<nav id="nav">
 					<ul>
-						<li class="current"><a href="index.html">Maison</a></li>
+						<!-- <li class="current"><a href="index.html">Maison</a></li> -->
 						<li class="current"><a href="fermiers.html">Devenir jardinier</a></li>
+						<li class="current"><a href="potagers.html">Choisir un potager</a></li>
 						<li><a href="#" class="button special">Rejoindre le réseau</a></li>
 					</ul>
 				</nav>
@@ -80,38 +108,23 @@
 					<!-- One -->
 						<section class="wrapper style4 container">
 
- 					<div id="map"></div>
+ 							<div id="map"></div>
 
 							<div class="row 150%">
 								<div class="4u 12u(narrower)">
-
-									<!-- Sidebar -->
 										<div class="sidebar">
-											<section>
-												<header style="text-align:center; padding-top:1em;">
-													<img src="images/emily.png">
-												</header>
-												<p>Le jardin de Sylvie est fort en radis…</p>
-												<footer>
+
+											<section id="jardibox">
+												<header style="text-align:center; padding-top:1em;"><img id="jardibox_img"/></header>
+												<p>Glissez sur les radis !</p>
+												<footer style="text-align:center; display:none;" id="jardibox_bouton">
 													<ul class="buttons">
 														<li><a href="#" class="button">Entrer en contact !</a></li>
 													</ul>
 												</footer>
 											</section>
 
-											<section>
-												<header style="text-align:center; padding-top:1em;">
-													<img src="images/martinmatin.png">
-												</header>
-												<p>Le jardin de Sylvie est fort en radis…</p>
-												<footer>
-													<ul class="buttons">
-														<li><a href="#" class="button">Entrer en contact !</a></li>
-													</ul>
-												</footer>
-											</section>
 										</div>
-
 								</div>
 								<div class="8u 12u(narrower) important(narrower)">
 
@@ -119,7 +132,7 @@
 										<div class="content" style="padding-top:2em;">
 											<section>
 												<header>
-													<h3>Dolore Amet Consequat</h3>
+													<h3 style="text-indent:50px;">Des fermiers près de chez vous</h3>
 												</header>
 												
 												<p>Aliquam massa urna, imperdiet sit amet mi non, bibendum euismod est. Curabitur mi justo, tincidunt vel eros ullamcorper, porta cursus justo. Cras vel neque eros. Vestibulum diam quam, mollis at consectetur non, malesuada quis augue. Morbi tincidunt pretium interdum. Morbi mattis elementum orci, nec dictum massa. Morbi eu faucibus massa. Aliquam massa urna, imperdiet sit amet mi non, bibendum euismod est. Curabitur mi justo, tincidunt vel eros ullamcorper, porta cursus justo. Cras vel neque eros. Vestibulum diam.</p>
@@ -139,8 +152,6 @@
 						<li><a href="#" class="icon circle fa-twitter"><span class="label">Twitter</span></a></li>
 						<li><a href="#" class="icon circle fa-facebook"><span class="label">Facebook</span></a></li>
 						<li><a href="#" class="icon circle fa-google-plus"><span class="label">Google+</span></a></li>
-						<li><a href="#" class="icon circle fa-github"><span class="label">Github</span></a></li>
-						<li><a href="#" class="icon circle fa-dribbble"><span class="label">Dribbble</span></a></li>
 					</ul>
 					<ul class="copyright">
 						<li>&copy; TERRE FERME</li><li>Imagined from <a href="http://html5up.net">H5U</a></li>
