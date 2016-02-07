@@ -21,6 +21,29 @@
   <link href="assets/css/gmap-styles.css" rel='stylesheet' type='text/css' />
   <link rel="stylesheet" type="text/css" href="assets/css/gmap-examples.css" />
   <script type="text/javascript">
+  function tougueul (ty) {
+  	var jardibox_img = $('#jardibox_img');
+  	var jardibox_txt = $('#jardibox p');
+  	var jardibox_btn = $('#jardibox_bouton');
+  	if (ty === 'sylvie') {
+  		console.log('ty '+ty);
+  		jardibox_img.attr('src', 'images/emily.png');
+  		jardibox_txt.text('Le jardin de Sylvie est fort en radis…');
+  		jardibox_btn.show();
+  	} else if (ty === 'martin') {
+  		console.log('ty '+ty);
+  		jardibox_img.attr('src', 'images/martinmatin.png');
+  		jardibox_txt.text('Martin est fan #1 de radis noirs.');
+  		jardibox_btn.show();
+  	} else {
+  		console.log('ty '+ty);
+  		jardibox_img.attr('src', '');
+  		jardibox_txt.text('Glissez sur les radis !');
+  		jardibox_btn.hide();
+  	}
+  };
+  tougueul('');
+
     var map;
     $(document).ready(function(){
       map = new GMaps({
@@ -43,12 +66,16 @@
         lat: 48.866259,
         lng:  2.358502,
         icon: 'images/radisnoir.png',
+        mouseover: function (evt) { tougueul('sylvie'); },
+        // mouseout: function (evt) { tougueul(''); },
       });
 
       map.addMarker({
         lat: 48.865534,
         lng:  2.343882,
 		icon: 'images/radisrouge.png',
+        mouseover: function (evt) { tougueul('martin'); },
+        // mouseout: function (evt) { tougueul(''); },
       });
 
       map.setOptions({
@@ -84,34 +111,19 @@
 
 							<div class="row 150%">
 								<div class="4u 12u(narrower)">
-
-									<!-- Sidebar -->
 										<div class="sidebar">
-											<section>
-												<header style="text-align:center; padding-top:1em;">
-													<img src="images/emily.png">
-												</header>
-												<p>Le jardin de Sylvie est fort en radis…</p>
-												<footer>
+
+											<section id="jardibox">
+												<header style="text-align:center; padding-top:1em;"><img id="jardibox_img"/></header>
+												<p>Glissez sur les radis !</p>
+												<footer style="text-align:center; display:none;" id="jardibox_bouton">
 													<ul class="buttons">
 														<li><a href="#" class="button">Entrer en contact !</a></li>
 													</ul>
 												</footer>
 											</section>
 
-											<section>
-												<header style="text-align:center; padding-top:1em;">
-													<img src="images/martinmatin.png">
-												</header>
-												<p>Le jardin de Sylvie est fort en radis…</p>
-												<footer>
-													<ul class="buttons">
-														<li><a href="#" class="button">Entrer en contact !</a></li>
-													</ul>
-												</footer>
-											</section>
 										</div>
-
 								</div>
 								<div class="8u 12u(narrower) important(narrower)">
 
